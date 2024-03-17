@@ -1,4 +1,4 @@
-import MovieRepository from "../repositories/movieRepository.js";
+import MovieRepository from "../repoistories/moviesRepo.js";
 import { Op } from "sequelize";
 import pagination from "../services/pagination.js";
 const DEFAULT_LIMIT = 10;

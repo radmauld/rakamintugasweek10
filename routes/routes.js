@@ -2,8 +2,14 @@ import express from "express";
 import multer from "multer";
 import { verifyUser } from "../middlewares/AuthUsers.js";
 import MovieController from "../controllers/movieController.js";
-import userController from "../controllers/userController.js";
-import diskStorage from "../uploads/uploads.js";
+import {
+  findAll,
+  findOne,
+  create,
+  update,
+  destroy,
+} from "../controllers/userController.js";
+import { diskStorage } from "multer";
 const router = express.Router();
 
 router.get("/", function (req, res) {
@@ -16,11 +22,11 @@ router.post("/api/movies", verifyUser, MovieController.create);
 router.put("/api/movies/:id", verifyUser, MovieController.update);
 router.delete("/api/movies/:id", verifyUser, MovieController.destroy);
 
-router.get("/api/users", verifyUser, userController.findAll);
-router.get("/api/users/:id", verifyUser, userController.findOne);
-router.post("/api/users/register", userController.create);
-router.put("/api/users/:id", verifyUser, userController.update);
-router.delete("/api/users/:id", verifyUser, userController.destroy);
+router.get("/api/users", verifyUser, findAll);
+router.get("/api/users/:id", verifyUser, findOne);
+router.post("/api/users/register", create);
+router.put("/api/users/:id", verifyUser, update);
+router.delete("/api/users/:id", verifyUser, destroy);
 
 const upload = multer({ storage: diskStorage });
 router.post("/api/movies/upload/:id", upload.single("photo"), (req, res) => {
