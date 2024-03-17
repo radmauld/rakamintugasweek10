@@ -1,4 +1,4 @@
-import MovieService from "../services/movieService.js";
+import MovieService from '../services/movieServices.js';
 
 class MovieController {
   static findAll = async (req, res, next) => {

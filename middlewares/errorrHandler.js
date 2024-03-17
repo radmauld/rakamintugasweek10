@@ -1,9 +1,10 @@
-import { message } from "statuses";
+import message from "statuses";
 
-const errorHandler = (err, req, res, next) => {console.log(err);
+const errorHandler = (err, req, res, next) => {
+  console.log(err);
 
-if (err.name === "ErrorNotFound") {
-  res.status(404).json({ name: err.name message: err.message});
+  if (err.name === "ErrorNotFound") {
+    res.status(404).json({ name: err.name, message: err.message });
   } else if (err.code === "23505") {
     res.status(400).json({ message: err.detail });
   } else if (err.name === "InvalidCredentials") {

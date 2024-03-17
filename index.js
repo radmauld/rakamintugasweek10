@@ -1,11 +1,11 @@
 import express from "express";
-import router from "./routers/Routes.js";
 import dotenv from "dotenv";
 import session from "express-session";
 import sequelizeStore from "connect-session-sequelize";
 import db from "./config/database.js";
-import errorHandler from "./middlewares/errorHandler.js";
+import errorHandler from "./middlewares/errorrHandler.js";
 import path from "path";
+import router from "./routes/routes.js";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
